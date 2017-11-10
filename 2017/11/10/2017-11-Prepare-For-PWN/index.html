@@ -9,20 +9,20 @@
     <title>Prepare_For_PWN | Hexo</title>
 
     <!-- Open Graph -->
-    <meta name="description" content="1.&amp;#x914D;&amp;#x7F6E;&amp;#x7CFB;&amp;#x7EDF; &amp;#x7CFB;&amp;#x7EDF;&amp;#x9700;&amp;#x6C42;: x64 Ubuntu &amp;gt;= 16.04   &amp;#x5C06;&amp;#x8F6F;&amp;#x4EF6;&amp;#x6E90;&amp;#x8BBE;&amp;#x7F6E;&amp;#x4E3A;&amp;#x963F;&amp;#x91CC;&amp;#x4E91;&amp;#xFF1A;  123# &amp;#x66F4;&amp;#x">
+    <meta name="description" content="1.&amp;#x914D;&amp;#x7F6E;&amp;#x7CFB;&amp;#x7EDF; &amp;#x7CFB;&amp;#x7EDF;&amp;#x9700;&amp;#x6C42;: x64 Ubuntu &amp;gt;= 16.04   &amp;#x5C06;&amp;#x8F6F;&amp;#x4EF6;&amp;#x6E90;&amp;#x8BBE;&amp;#x7F6E;&amp;#x4E3A;&amp;#x963F;&amp;#x91CC;&amp;#x4E91;&amp;#xFF1A;  12345# &amp;#x66F4;&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Prepare_For_PWN">
 <meta property="og:url" content="http://yoursite.com/2017/11/10/2017-11-Prepare-For-PWN/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="1.&amp;#x914D;&amp;#x7F6E;&amp;#x7CFB;&amp;#x7EDF; &amp;#x7CFB;&amp;#x7EDF;&amp;#x9700;&amp;#x6C42;: x64 Ubuntu &amp;gt;= 16.04   &amp;#x5C06;&amp;#x8F6F;&amp;#x4EF6;&amp;#x6E90;&amp;#x8BBE;&amp;#x7F6E;&amp;#x4E3A;&amp;#x963F;&amp;#x91CC;&amp;#x4E91;&amp;#xFF1A;  123# &amp;#x66F4;&amp;#x">
+<meta property="og:description" content="1.&amp;#x914D;&amp;#x7F6E;&amp;#x7CFB;&amp;#x7EDF; &amp;#x7CFB;&amp;#x7EDF;&amp;#x9700;&amp;#x6C42;: x64 Ubuntu &amp;gt;= 16.04   &amp;#x5C06;&amp;#x8F6F;&amp;#x4EF6;&amp;#x6E90;&amp;#x8BBE;&amp;#x7F6E;&amp;#x4E3A;&amp;#x963F;&amp;#x91CC;&amp;#x4E91;&amp;#xFF1A;  12345# &amp;#x66F4;&amp;">
 <meta property="og:locale" content="zh">
 <meta property="og:image" content="http://yoursite.com/2017/11/10/2017-11-Prepare-For-PWN/images/software_source_config.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/10/2017-11-Prepare-For-PWN/images/locked_apt.png">
 <meta property="og:image" content="http://yoursite.com/2017/11/10/2017-11-Prepare-For-PWN/images/locked_apt2.png">
-<meta property="og:updated_time" content="2017-11-10T10:06:39.584Z">
+<meta property="og:updated_time" content="2017-11-10T10:41:38.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Prepare_For_PWN">
-<meta name="twitter:description" content="1.&amp;#x914D;&amp;#x7F6E;&amp;#x7CFB;&amp;#x7EDF; &amp;#x7CFB;&amp;#x7EDF;&amp;#x9700;&amp;#x6C42;: x64 Ubuntu &amp;gt;= 16.04   &amp;#x5C06;&amp;#x8F6F;&amp;#x4EF6;&amp;#x6E90;&amp;#x8BBE;&amp;#x7F6E;&amp;#x4E3A;&amp;#x963F;&amp;#x91CC;&amp;#x4E91;&amp;#xFF1A;  123# &amp;#x66F4;&amp;#x">
+<meta name="twitter:description" content="1.&amp;#x914D;&amp;#x7F6E;&amp;#x7CFB;&amp;#x7EDF; &amp;#x7CFB;&amp;#x7EDF;&amp;#x9700;&amp;#x6C42;: x64 Ubuntu &amp;gt;= 16.04   &amp;#x5C06;&amp;#x8F6F;&amp;#x4EF6;&amp;#x6E90;&amp;#x8BBE;&amp;#x7F6E;&amp;#x4E3A;&amp;#x963F;&amp;#x91CC;&amp;#x4E91;&amp;#xFF1A;  12345# &amp;#x66F4;&amp;">
 <meta name="twitter:image" content="http://yoursite.com/2017/11/10/2017-11-Prepare-For-PWN/images/software_source_config.png">
 
     <script type="application/ld+json">
@@ -151,16 +151,23 @@
 <ol class="ui list">
 <li><p>&#x5C06;&#x8F6F;&#x4EF6;&#x6E90;&#x8BBE;&#x7F6E;&#x4E3A;&#x963F;&#x91CC;&#x4E91;&#xFF1A;<br><a class="magnific-img" href="./images/software_source_config.png"><img src="./images/software_source_config.png" alt="software_source_config.png" class="ui centered image"></a></p>
 </li>
-<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#x66F4;&#x65B0;&#x8F6F;&#x4EF6;&#x5217;&#x8868;&#xFF0C;&#x5B89;&#x88C5;pwntools&#x4F9D;&#x8D56;</span></span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install python2.7 python-pip python-dev git libssl-dev libffi-dev build-essential</span><br></pre></td></tr></table></figure>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#x66F4;&#x65B0;&#x8F6F;&#x4EF6;&#x5217;&#x8868;&#xFF0C;&#x5B89;&#x88C5;pwntools&#x4F9D;&#x8D56;</span></span><br><span class="line">$ sudo apt update</span><br><span class="line">$ sudo apt install python2.7 python-pip python-dev git libssl-dev libffi-dev build-essential</span><br><span class="line"><span class="comment"># &#x5B89;&#x88C5;ipython</span></span><br><span class="line">$ sudo apt install ipython</span><br></pre></td></tr></table></figure>
 </li>
 </ol>
-<p><strong>&#x5982;&#x679C;&#x9047;&#x5230;&#x4EE5;&#x4E0B;&#x95EE;&#x9898;</strong>&#xFF1A;<br><a class="magnific-img" href="./images/locked_apt.png"><img src="./images/locked_apt.png" alt="locked_apt.png" class="ui centered image"></a><br>&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x89E3;&#x51B3;&#xFF1A;<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#x5148;&#x627E;&#x51FA;&#x9501;&#x4F4F;apt&#x7684;&#x8FDB;&#x7A0B;&#x53F7;</span></span><br><span class="line">sudo ps -ef | grep apt | grep -v grep</span><br></pre></td></tr></table></figure></p>
+<ul class="ui list">
+<li><strong>&#x5982;&#x679C;&#x9047;&#x5230;&#x4EE5;&#x4E0B;&#x95EE;&#x9898;</strong>&#xFF1A;<br><img src="./images/locked_apt.png" alt="locked_apt.png"><br>&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x89E3;&#x51B3;&#xFF1A;</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#x5148;&#x627E;&#x51FA;&#x9501;&#x4F4F;apt&#x7684;&#x8FDB;&#x7A0B;&#x53F7;</span></span><br><span class="line">$ sudo ps -ef | grep apt | grep -v grep</span><br></pre></td></tr></table></figure>
 <p><a class="magnific-img" href="./images/locked_apt2.png"><img src="./images/locked_apt2.png" alt="locked_apt2.png" class="ui centered image"></a></p>
-<h2 id="2-&#x5B89;&#x88C5;pwntools"><a href="#2-&#x5B89;&#x88C5;pwntools" class="headerlink" title="2.&#x5B89;&#x88C5;pwntools"></a>2.&#x5B89;&#x88C5;pwntools</h2><p>&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x8C46;&#x74E3;&#x6E90;&#x5B89;&#x88C5;<br>sudo -H python2 -m pip install -U pwntools -i <a href="https://pypi.douban.com/simple" target="_blank" rel="external">https://pypi.douban.com/simple</a></p>
-<p>&#x914D;&#x7F6E;&#x597D;proxychains(&#x4EE3;&#x7406;&#x5DE5;&#x5177;)&#x540E;&#xFF0C;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF1A;</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -H proxychains python2 -m pip install -U pwntools</span><br></pre></td></tr></table></figure>
-<p>&#x6CA1;&#x6709;&#x4EE3;&#x7406;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;pip&#x7684;<code>-i</code>&#x9009;&#x9879;&#xFF0C;eg&#xFF1A;</p>
-<h2 id="3-&#x5B89;&#x88C5;gef"><a href="#3-&#x5B89;&#x88C5;gef" class="headerlink" title="3.&#x5B89;&#x88C5;gef"></a>3.&#x5B89;&#x88C5;gef</h2>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#x627E;&#x51FA;&#x540E;&#xFF0C;kill&#x8FDB;&#x7A0B;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x6B21;&#x8FD0;&#x884C;update&#x547D;&#x4EE4;&#x5373;&#x53EF;</span></span><br><span class="line">$ sudo <span class="built_in">kill</span> 5208; sudo apt update</span><br></pre></td></tr></table></figure>
+<h2 id="2-&#x5B89;&#x88C5;pwntools"><a href="#2-&#x5B89;&#x88C5;pwntools" class="headerlink" title="2.&#x5B89;&#x88C5;pwntools"></a>2.&#x5B89;&#x88C5;<a href="https://github.com/Gallopsled/pwntools" target="_blank" rel="external">pwntools</a></h2><ul class="ui list">
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x8C46;&#x74E3;&#x6E90;&#x5B89;&#x88C5;,&#x901F;&#x5EA6;&#x975E;&#x5E38;&#x5FEB;</span></span><br><span class="line">$ sudo -H python2 -m pip install -U pwntools -i https://pypi.douban.com/simple</span><br></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#x5982;&#x679C;&#x6709;&#x4EE3;&#x7406;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4EE3;&#x7406;&#xFF08;&#x547D;&#x4EE4;&#x884C;&#x4EE3;&#x7406;&#x5DE5;&#x5177;&#x63A8;&#x8350;proxychains&#xFF09;</span></span><br><span class="line"><span class="comment"># &#x914D;&#x7F6E;&#x597D;proxychains&#x540E;&#xFF0C;&#x6267;&#x884C;&#x4EE5;&#x4E0B;&#x547D;&#x4EE4;&#xFF1A;</span></span><br><span class="line">$ sudo -H proxychains python2 -m pip install -U pwntools</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="3-&#x5B89;&#x88C5;gef"><a href="#3-&#x5B89;&#x88C5;gef" class="headerlink" title="3.&#x5B89;&#x88C5;gef"></a>3.&#x5B89;&#x88C5;<a href="https://github.com/hugsy/gef" target="_blank" rel="external">gef</a></h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x5B89;&#x88C5;&#x811A;&#x672C;&#x5B89;&#x88C5;</span></span><br><span class="line">$ wget -q -O- https://github.com/hugsy/gef/raw/master/gef.sh | sh</span><br><span class="line"><span class="comment"># &#x9A8C;&#x8BC1;&#x5B89;&#x88C5;&#x662F;&#x5426;&#x6210;&#x529F;</span></span><br><span class="line">$ gdb</span><br><span class="line">gef&#x27A4;  <span class="comment"># &#x51FA;&#x73B0;&#x5DE6;&#x4FA7;&#x63D0;&#x793A;&#x7B26;&#x5373;&#x5B89;&#x88C5;&#x6210;&#x529F;&#xFF0C;quit&#x6216;ctrl+d&#x9000;&#x51FA;</span></span><br></pre></td></tr></table></figure>
+<h2 id="4-&#x83B7;&#x53D6;IDA-Pro-7-0-&#x4E0D;&#x63D0;&#x4F9B;"><a href="#4-&#x83B7;&#x53D6;IDA-Pro-7-0-&#x4E0D;&#x63D0;&#x4F9B;" class="headerlink" title="4.&#x83B7;&#x53D6;IDA Pro 7.0 (&#x4E0D;&#x63D0;&#x4F9B;)"></a>4.&#x83B7;&#x53D6;IDA Pro 7.0 (&#x4E0D;&#x63D0;&#x4F9B;)</h2>
                         
                     </div>
 
@@ -194,11 +201,8 @@
             <div class="column nav-right">
                 
 
-                <a href="/2017/11/10/draft1/" class="ui tiny button">
-                    
-                    draft1
-                    
-                    <i class="angle right icon"></i></a>
+                <a class="ui tiny button disabled">Next<i class="angle right icon"></i></a>
+
                 
             </div>
         </div>
@@ -213,7 +217,7 @@
 
                 <div class="ui sticky article-toc" id="article-toc">
                     <!-- toc -->
-                    <ol class="ui ordered list"><li><a href="#1-配置系统"><span>1.配置系统</span></a></li><li><a href="#2-安装pwntools"><span>2.安装pwntools</span></a></li><li><a href="#3-安装gef"><span>3.安装gef</span></a></li></ol>
+                    <ol class="ui ordered list"><li><a href="#1-配置系统"><span>1.配置系统</span></a></li><li><a href="#2-安装pwntools"><span>2.安装pwntools</span></a></li><li><a href="#3-安装gef"><span>3.安装gef</span></a></li><li><a href="#4-获取IDA-Pro-7-0-不提供"><span>4.获取IDA Pro 7.0 (不提供)</span></a></li></ol>
                 </div>
 
             </div>
