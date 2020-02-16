@@ -1,2 +1,17 @@
-theme: jekyll-theme-cayman
-title: Justlearnm0re
+remote_theme: mmistakes/minimal-mistakes
+title: Just1earnm0re
+plugins:
+  - jekyll-include-cache
+
+defaults:
+  # _posts
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      #read_time: true
+      #comments: true
+      #share: true
+      #related: true
