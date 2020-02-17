@@ -1,4 +1,6 @@
 remote_theme             : mmistakes/minimal-mistakes
+minimal_mistakes_skin    : "air" # "air", "aqua", "contrast", "dark", "dirt", "neon", "mint", "plum", "sunrise"
+
 title                    : Just1earnm0re
 subtitle                 : "苟有恒,何必三更眠五更起；最无益,莫过一日曝十日寒。"
 name                     : &name "Just1earnm0re" # &name is a YAML anchor which can be *referenced later
