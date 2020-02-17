@@ -64,6 +64,18 @@ encoding: "utf-8"
 markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
 
+plugins:
+  - jekyll-include-cache
+  
+
+category_archive:
+  type: liquid
+  path: /categories/
+tag_archive:
+  type: liquid
+  path: /tags/
+
+  
 defaults:
   # _posts
   - scope:
@@ -84,9 +96,5 @@ defaults:
       layout: single
       author_profile: true
 
-
-plugins:
-  - jekyll-include-cache
-  
 
   
