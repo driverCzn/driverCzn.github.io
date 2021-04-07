@@ -5,5 +5,7 @@ main:
     url: /categories/
   - title: "Tags"
     url: /tags/
+  - title: "Glibc Source"
+    url: http://www.j10.monster/Glibc-source-browser/
   - title: "About"
     url: /about/
