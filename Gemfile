@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
-gem "github-pages", group: :jekyll_plugins
-gem "jekyll"
+# gem "github-pages", group: :jekyll_plugins
 gem "jekyll-include-cache"
-gem "jekyll-org", '>= 1.1.0'
+
+gem "jekyll"
+
+gem "jekyll-org"
+
+gem "minimal-mistakes-jekyll"

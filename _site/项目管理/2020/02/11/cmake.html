@@ -1,0 +1,518 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.18.1 by Michael Rose
+  Copyright 2013-2019 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE
+-->
+<html lang="en" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin _includes/seo.html --><title>使用CMake为每一个C文件生成可执行对象 - Just1earnm0re</title>
+<meta name="description" content="由于CLion似乎对CMake的友好度更高，所以将原有的使用Makefile的工作方式改为CMake。 原项目结构如下：">
+
+
+  <meta name="author" content="Just1earnm0re">
+  
+  <meta property="article:author" content="Just1earnm0re">
+  
+
+
+<meta property="og:type" content="article">
+<meta property="og:locale" content="en_US">
+<meta property="og:site_name" content="Just1earnm0re">
+<meta property="og:title" content="使用CMake为每一个C文件生成可执行对象">
+<meta property="og:url" content="http://www.j10.monster/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/2020/02/11/cmake.html">
+
+
+  <meta property="og:description" content="由于CLion似乎对CMake的友好度更高，所以将原有的使用Makefile的工作方式改为CMake。 原项目结构如下：">
+
+
+
+
+
+
+
+  <meta property="article:published_time" content="2020-02-11T00:00:00+08:00">
+
+
+
+
+
+
+<link rel="canonical" href="http://www.j10.monster/%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86/2020/02/11/cmake.html">
+
+
+
+
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    
+      "@type": "Person",
+      "name": "Just1earnm0re",
+      "url": "http://www.j10.monster/"
+    
+  }
+</script>
+
+
+
+
+
+
+<!-- end _includes/seo.html -->
+
+
+
+  <link href="/feed.xml" type="application/atom+xml" rel="alternate" title="Just1earnm0re Feed">
+
+
+<!-- https://t.co/dKP3o1e -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="/assets/css/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5/css/all.min.css">
+
+<!--[if IE]>
+  <style>
+    /* old IE unsupported flexbox fixes */
+    .greedy-nav .site-title {
+      padding-right: 3em;
+    }
+    .greedy-nav button {
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+  </style>
+<![endif]-->
+
+
+    <!-- start custom head snippets -->
+
+<!-- insert favicons. use https://realfavicongenerator.net/ -->
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body class="layout--single">
+    <nav class="skip-links">
+  <h2 class="screen-reader-text">Skip links</h2>
+  <ul>
+    <li><a href="#site-nav" class="screen-reader-shortcut">Skip to primary navigation</a></li>
+    <li><a href="#main" class="screen-reader-shortcut">Skip to content</a></li>
+    <li><a href="#footer" class="screen-reader-shortcut">Skip to footer</a></li>
+  </ul>
+</nav>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        
+        <a class="site-title" href="/">
+          Just1earnm0re
+          <span class="site-subtitle">苟有恒,何必三更眠五更起；最无益,莫过一日曝十日寒。</span>
+        </a>
+        <ul class="visible-links"><li class="masthead__menu-item">
+              <a href="/posts/">Posts</a>
+            </li><li class="masthead__menu-item">
+              <a href="/categories/">Categories</a>
+            </li><li class="masthead__menu-item">
+              <a href="/tags/">Tags</a>
+            </li><li class="masthead__menu-item">
+              <a href="http://www.j10.monster/Glibc-source-browser/">Glibc Source</a>
+            </li><li class="masthead__menu-item">
+              <a href="/about/">About</a>
+            </li></ul>
+        
+        <button class="greedy-nav__toggle hidden" type="button">
+          <span class="visually-hidden">Toggle menu</span>
+          <div class="navicon"></div>
+        </button>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+
+    <div class="initial-content">
+      
+
+
+
+<div id="main" role="main">
+  
+  <div class="sidebar sticky">
+  
+
+
+<div itemscope itemtype="https://schema.org/Person">
+
+  
+    <div class="author__avatar">
+      
+        <img src="/assets/images/one.jpg" alt="Just1earnm0re" itemprop="image">
+      
+    </div>
+  
+
+  <div class="author__content">
+    
+      <h3 class="author__name" itemprop="name">Just1earnm0re</h3>
+    
+    
+      <div class="author__bio" itemprop="description">
+        <p>Used to be a PWNer</p>
+
+      </div>
+    
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      
+
+      
+        
+          
+            <li><a href="https://github.com/driverczn" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i><span class="label">GitHub</span></a></li>
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      <!--
+  <li>
+    <a href="http://link-to-whatever-social-network.com/user/" itemprop="sameAs" rel="nofollow noopener noreferrer">
+      <i class="fas fa-fw" aria-hidden="true"></i> Custom Social Profile Link
+    </a>
+  </li>
+-->
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+
+  <article class="page" itemscope itemtype="https://schema.org/CreativeWork">
+    <meta itemprop="headline" content="使用CMake为每一个C文件生成可执行对象">
+    <meta itemprop="description" content="由于CLion似乎对CMake的友好度更高，所以将原有的使用Makefile的工作方式改为CMake。原项目结构如下：">
+    <meta itemprop="datePublished" content="2020-02-11T00:00:00+08:00">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 id="page-title" class="page__title" itemprop="headline">使用CMake为每一个C文件生成可执行对象
+</h1>
+          
+
+
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        
+        <p>由于CLion似乎对CMake的友好度更高，所以将原有的使用Makefile的工作方式改为CMake。
+原项目结构如下：</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>how2heap/
+	Makefile
+	{source_files}.c
+	...
+	glibc_2.25/
+		{source_files}.c
+	glibc_2.26/
+		{source_files}.c
+</code></pre></div></div>
+
+<p>原有的Makefile内容如下，功能就是为每个C源文件单独生成一个可执行文件。</p>
+
+<div class="language-makefile highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">BASE</span> <span class="o">=</span> fastbin_dup malloc_playground first_fit calc_tcache_idx
+<span class="nv">V2.25</span> <span class="o">=</span> glibc_2.25/fastbin_dup_into_stack glibc_2.25/fastbin_dup_consolidate glibc_2.25/unsafe_unlink glibc_2.25/house_of_spirit glibc_2.25/poison_null_byte glibc_2.25/house_of_lore glibc_2.25/overlapping_chunks glibc_2.25/overlapping_chunks_2 glibc_2.25/house_of_force glibc_2.25/large_bin_attack glibc_2.25/unsorted_bin_attack glibc_2.25/unsorted_bin_into_stack glibc_2.25/house_of_einherjar glibc_2.25/house_of_orange
+<span class="nv">V2.26</span> <span class="o">=</span> glibc_2.26/unsafe_unlink glibc_2.26/house_of_lore glibc_2.26/overlapping_chunks glibc_2.26/large_bin_attack glibc_2.26/unsorted_bin_attack glibc_2.26/unsorted_bin_into_stack glibc_2.26/house_of_einherjar glibc_2.26/tcache_dup glibc_2.26/tcache_poisoning glibc_2.26/tcache_house_of_spirit
+<span class="nv">PROGRAMS</span> <span class="o">=</span> <span class="nv">$(BASE)</span> <span class="nv">$(V2.25)</span> <span class="nv">$(V2.26)</span>
+<span class="nv">CFLAGS</span> <span class="o">+=</span> <span class="nt">-std</span><span class="o">=</span>c99 <span class="nt">-g</span>
+
+<span class="c"># Convenience to auto-call mcheck before the first malloc()
+#CFLAGS += -lmcheck
+</span>
+<span class="nl">all</span><span class="o">:</span> <span class="nf">$(PROGRAMS)</span>
+<span class="nl">clean</span><span class="o">:</span>
+	<span class="nb">rm</span> <span class="nt">-f</span> <span class="nv">$(PROGRAMS)</span>
+</code></pre></div></div>
+
+<p>如果要使用CMake的写法，那么有下面几步：</p>
+
+<ol>
+  <li>
+    <p>在所有存在源代码的目录下创建一个CMakeLists.txt，比如在how2heap,glibc_2.25和glibc_2.26这三个文件夹下各创建一个CMakeLists.txt。</p>
+  </li>
+  <li>编辑每个CMakeLists.txt，用来指导生成所在文件夹源文件对应的可执行文件。</li>
+  <li>使用CLion进行build等操作。</li>
+</ol>
+
+<p>显然重点是第2步，下面分层次对CMakeLists.txt进行说明。</p>
+
+<h2 id="顶层cmakeliststxt">顶层CMakeLists.txt</h2>
+
+<p>项目根目录下的CMakeLists.txt如下所示：</p>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">project</span><span class="p">(</span>how2heap<span class="p">)</span>
+
+<span class="nb">cmake_minimum_required</span><span class="p">(</span>VERSION 3.14<span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span>CMAKE_C_FLAGS <span class="s2">"</span><span class="si">${</span><span class="nv">CMAKE_C_FLAGS</span><span class="si">}</span><span class="s2"> -std=c99 -g"</span><span class="p">)</span>
+<span class="nb">set</span><span class="p">(</span>CMAKE_VERBOSE_MAKEFILE TRUE<span class="p">)</span>
+<span class="c1">#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -lmcheck")</span>
+
+
+<span class="nb">aux_source_directory</span><span class="p">(</span>. topdir<span class="p">)</span>
+
+<span class="nb">foreach</span><span class="p">(</span>src <span class="si">${</span><span class="nv">topdir</span><span class="si">}</span><span class="p">)</span>
+    <span class="nb">string</span><span class="p">(</span>REGEX MATCH <span class="s2">"[A-Za-z0-9_]+"</span> exe <span class="si">${</span><span class="nv">src</span><span class="si">}</span><span class="p">)</span>
+    <span class="nb">add_executable</span><span class="p">(</span><span class="si">${</span><span class="nv">exe</span><span class="si">}</span> <span class="si">${</span><span class="nv">src</span><span class="si">}</span><span class="p">)</span>
+<span class="nb">endforeach</span><span class="p">()</span>
+
+
+<span class="nb">add_subdirectory</span><span class="p">(</span>glibc_2.25<span class="p">)</span>
+<span class="nb">add_subdirectory</span><span class="p">(</span>glibc_2.26<span class="p">)</span>
+</code></pre></div></div>
+
+<p>首先简单说明CMakeLists.txt中的变量定义与使用方法，变量定义直接写标识符即可，变量引用要写成${变量}这种形式。</p>
+
+<p>只说重点，其中<code class="language-plaintext highlighter-rouge">aux_source_directory</code>用于将本CMakeLists.txt所在文件夹<code class="language-plaintext highlighter-rouge">.</code>（不包括子文件夹）下的所有源文件的路径以字符串构成的列表形式存进变量<code class="language-plaintext highlighter-rouge">topdir</code>。</p>
+
+<p><code class="language-plaintext highlighter-rouge">foreach</code>…<code class="language-plaintext highlighter-rouge">endforeach</code>语句写成Python就是<code class="language-plaintext highlighter-rouge">for src in topdir</code>，<code class="language-plaintext highlighter-rouge">string</code>函数正则匹配了源文件名无后缀的内容并赋值给变量<code class="language-plaintext highlighter-rouge">exe</code>。</p>
+
+<p><code class="language-plaintext highlighter-rouge">add_executable</code>将可执行目标文件名（项目内不可重名）以及基于的源文件名注册进当前项目。</p>
+
+<p><code class="language-plaintext highlighter-rouge">add_subdirectory</code>表示CMake会处理指定的文件夹中的CMakeLists.txt。</p>
+
+<h2 id="子cmakeliststxt">子CMakeLists.txt</h2>
+
+<ol>
+  <li>文件夹glibc_2.25中的CMakeLists.txt如下，相比顶层的CMakeLists.txt简洁许多。</li>
+</ol>
+
+<div class="language-cmake highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">aux_source_directory</span><span class="p">(</span>. v25dir<span class="p">)</span>  <span class="c1"># v26dir in glibc_2.26</span>
+
+<span class="nb">foreach</span><span class="p">(</span>src <span class="si">${</span><span class="nv">v25dir</span><span class="si">}</span><span class="p">)</span>
+    <span class="nb">string</span><span class="p">(</span>REGEX REPLACE <span class="s2">"./([A-Za-z0-9_]+).c"</span> <span class="s2">"</span><span class="se">\\</span><span class="s2">1_v25"</span> exe <span class="si">${</span><span class="nv">src</span><span class="si">}</span><span class="p">)</span>
+    <span class="nb">add_executable</span><span class="p">(</span><span class="si">${</span><span class="nv">exe</span><span class="si">}</span> <span class="si">${</span><span class="nv">src</span><span class="si">}</span><span class="p">)</span>
+<span class="nb">endforeach</span><span class="p">()</span>
+</code></pre></div></div>
+
+<p>由于在CMakeLists.txt中定义的变量似乎都是全局变量（来自经验，未查证），所以如果在这里<code class="language-plaintext highlighter-rouge">aux_source_directory</code>中还是写topdir而不是换一个名字比如v25dir，那么CMake会报类似<code class="language-plaintext highlighter-rouge">找不到fastbin_dup.c</code>（项目根目录下的一个文件）这种错误。</p>
+
+<p><code class="language-plaintext highlighter-rouge">string</code>函数选择了正则模式的替换功能：</p>
+
+<ul>
+  <li>
+    <p>第一个正则式匹配了整个src变量，并且使用<code class="language-plaintext highlighter-rouge">()</code>语法将需要的可执行文件名提取了出来。</p>
+  </li>
+  <li>
+    <p>第二个正则式使用<code class="language-plaintext highlighter-rouge">\\1</code>引用了上面使用<code class="language-plaintext highlighter-rouge">()</code>提取出来的内容，然后加上后缀。（由于glibc_2.25和glibc_2.26文件夹中存在很多文件名完全相同的文件，而<code class="language-plaintext highlighter-rouge">add_executable</code>不允许重名，所以分别在末尾加上<code class="language-plaintext highlighter-rouge">_v25</code>、<code class="language-plaintext highlighter-rouge">_v26</code>加以区别而不是像顶层的CMakeLists.txt那样进行简单的匹配。）</p>
+  </li>
+</ul>
+
+<ol>
+  <li>文件夹glibc_2.26中的CMakeLists.txt类似，进行相应修改即可。</li>
+</ol>
+
+<p>至此应该没有问题，可以使用CLion来build以及clean了。</p>
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/tags/#clion" class="page__taxonomy-item" rel="tag">CLion</a><span class="sep">, </span>
+    
+      <a href="/tags/#cmake" class="page__taxonomy-item" rel="tag">CMake</a><span class="sep">, </span>
+    
+      <a href="/tags/#makefile" class="page__taxonomy-item" rel="tag">Makefile</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fas fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      <a href="/categories/#%E9%A1%B9%E7%9B%AE%E7%AE%A1%E7%90%86" class="page__taxonomy-item" rel="tag">项目管理</a>
+    
+    </span>
+  </p>
+
+
+        
+  <p class="page__date"><strong><i class="fas fa-fw fa-calendar-alt" aria-hidden="true"></i> Updated:</strong> <time datetime="2020-02-11T00:00:00+08:00">February 11, 2020</time></p>
+
+
+      </footer>
+
+      
+
+      
+  <nav class="pagination">
+    
+      <a href="#" class="pagination--pager disabled">Previous</a>
+    
+    
+      <a href="/%E4%BA%8C%E8%BF%9B%E5%88%B6%E5%AE%89%E5%85%A8/2020/02/21/tcache-idx.html" class="pagination--pager" title="Tcache index计算以及CHUNKSIZE大小
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+</div>
+
+      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <div align="center" style="margin: 1em 0;">
+        <ins class="adsbygoogle"
+             style="display:block; border-bottom: initial;"
+             data-ad-client="ca-pub-7328585512091257"
+             data-ad-slot="3049671934"
+             data-ad-format="auto"></ins>
+        </div>
+        <script>
+        (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </div>
+
+    
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+
+<!-- end custom footer snippets -->
+        <div class="page__footer-follow">
+  <ul class="social-icons">
+    
+
+    
+      
+        
+          <li><a href="https://github.com/driverczn" rel="nofollow noopener noreferrer"><i class="fab fa-fw fa-github" aria-hidden="true"></i> GitHub</a></li>
+        
+      
+    
+
+    
+      <li><a href="/feed.xml"><i class="fas fa-fw fa-rss-square" aria-hidden="true"></i> Feed</a></li>
+    
+  </ul>
+</div>
+
+<div class="page__footer-copyright">&copy; 2021 Just1earnm0re. Powered by <a href="https://jekyllrb.com" rel="nofollow">Jekyll</a> &amp; <a href="https://mademistakes.com/work/minimal-mistakes-jekyll-theme/" rel="nofollow">Minimal Mistakes</a>.</div>
+
+      </footer>
+    </div>
+
+    
+  <script src="/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
