@@ -66,7 +66,6 @@ markdown_ext: "markdown,mkdown,mkdn,mkd,md"
 
 plugins:
   - jekyll-include-cache
-  - jekyll-org
   
 
 category_archive:
@@ -96,3 +95,6 @@ defaults:
     values:
       layout: single
       author_profile: true
+
+
+  
